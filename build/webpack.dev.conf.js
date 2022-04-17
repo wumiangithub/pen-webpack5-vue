@@ -58,7 +58,7 @@ const devConfig = {
       },
       filename: 'index.html',
       template: appHtml,
-      // inject: true,
+      inject: true,
     }),
   ],
 }

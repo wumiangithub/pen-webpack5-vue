@@ -7,16 +7,19 @@ const baseConfig = require('./webpack.base.conf.js')
 const prodConfig = {
   plugins: [
     new HtmlWebpackPlugin({
+      templateParameters: {
+        BASE_URL: `/`, //会植入到html文件中
+      },
       filename: 'index.html',
       template: appHtml,
       inject: true,
       minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true,
+        removeAttributeQuotes: true, //去除html中的双引号
+        removeComments: true, //将html中的注释去除
+        collapseWhitespace: true, //将html缩为一行   不推荐   但是在使用html-withimg-loader这个处理html中图片资源的loader也将html缩为1行了
       },
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      // chunksSortMode: 'dependency',
+      // chunksSortMode: 'auto',
     }),
   ],
 }

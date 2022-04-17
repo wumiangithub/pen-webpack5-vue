@@ -1,0 +1,11 @@
+/*
+这里只能定义变量，不能定义具体的样式
+因为
+搭配webpack全局引入，具体样式会被多次重复引入
+*/
+// @use './el-reset-theme.scss';
+$pageBgColor: #f1f3f9;
+$primaryColor: #409eff; // rgb(64, 158, 255); //#1677ff
+$primaryFontColor: #2c3e50;
+$primaryHoverBgColor: #d9ecff;
+$dangerColor: #f56c6c;

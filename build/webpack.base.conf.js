@@ -1,3 +1,4 @@
+const { VueLoaderPlugin } = require('vue-loader')
 const { appIndexJs, appBuild } = require('./paths')
 module.exports = {
   target: 'web',
@@ -16,5 +17,14 @@ module.exports = {
     // chunkFilename: `static/js/[name].[chunkhash:8].${Date.now()}.chunk.js?[chunkhash:8]`,
     // publicPath: staticDomain,
   },
-  plugins: [],
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        // options: vueLoaderConfig,
+      },
+    ],
+  },
+  plugins: [new VueLoaderPlugin()],
 }
