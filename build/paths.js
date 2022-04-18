@@ -3,16 +3,16 @@ const path = require('path')
 const appDirectory = fs.realpathSync(process.cwd())
 const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath)
 const moduleFileExtensions = [
-  'web.mjs',
-  'mjs',
-  'web.js',
+  // 'web.mjs',
+  // 'mjs',
+  // 'web.js',
   'js',
-  'web.ts',
+  // 'web.ts',
   'ts',
-  'web.tsx',
+  // 'web.tsx',
   'tsx',
   'json',
-  'web.jsx',
+  // 'web.jsx',
   'jsx',
 ]
 // Resolve file paths in the same order as webpack
@@ -30,7 +30,9 @@ const resolveModule = (resolveFn, filePath) => {
 
 const pathUrl = {
   appIndexJs: resolveModule(resolveApp, 'src/index'),
-	appHtml: resolveApp('public/index.html'),
+  appHtml: resolveApp('public/index.html'),
   appBuild: resolveApp('dist'),
+  appSrc: resolveApp('src'),
+  appPenLib: resolveApp('components'),
 }
 module.exports = pathUrl

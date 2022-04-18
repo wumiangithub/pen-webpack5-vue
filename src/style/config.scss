@@ -2,6 +2,8 @@
 这里只能定义变量，不能定义具体的样式
 因为
 搭配webpack全局引入，具体样式会被多次重复引入
+
+不过现在不推荐使用scss全局变量了，推荐直接使用css变量
 */
 // @use './el-reset-theme.scss';
 $pageBgColor: #f1f3f9;
