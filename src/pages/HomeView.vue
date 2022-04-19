@@ -1,14 +1,16 @@
 <template>
-  <div class="">hello vue</div>
+  <div class="">{{ msg }}</div>
   <!-- <img src="../imgs/logo.png" alt=""/> -->
-  <img src="@/imgs/logo.png" alt=""/>
+  <img src="@/imgs/logo.png" alt="" />
 </template>
 
 <script>
 export default {
   components: {},
   data() {
-    return {};
+    return {
+      msg: "hello vue",
+    };
   },
   computed: {},
   watch: {},

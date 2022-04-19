@@ -1,5 +1,7 @@
 const webpack = require('webpack')
 const { VueLoaderPlugin } = require('vue-loader')
+const CssExtractPlugin = require('mini-css-extract-plugin') //分割css 而且production环境替代style-loader
+const devMode = process.env.NODE_ENV !== 'production'
 const { appIndexJs, appBuild, appSrc, appPenLib } = require('./paths')
 const { getClientEnvironment } = require('./env')
 const env = getClientEnvironment()
@@ -11,7 +13,6 @@ module.exports = {
     path: appBuild, //dist目录
     filename: `static/js/[name].[hash:8].bundle.js`,
     chunkFilename: `static/js/[name].[hash:8].chunk.js`,
-    // clean: true, // 打包前清空输出目录，相当于clean-webpack-plugin插件的作用,webpack5新增
     // assetModuleFilename: 'static/images/[hash][ext][query]',//图片文件等资源输出目录
 
     // filename: staticFolderName + `/js/[name].[chunkhash:8].bundle.js`,
@@ -36,24 +37,25 @@ module.exports = {
             test: /\.css$/,
             use: [
               // 'vue-style-loader', //vue-style-loader和style-loader二选一就可以
-              {
-                loader: 'style-loader',
-                // options: {
-                //   insert: function insertAtTop(element) {
-                //     var parent = document.querySelector('head')
-                //     var lastInsertedElement =
-                //       window._lastElementInsertedByStyleLoader
-                //     if (!lastInsertedElement) {
-                //       parent.insertBefore(element, parent.firstChild)
-                //     } else if (lastInsertedElement.nextSibling) {
-                //       parent.insertBefore(element, lastInsertedElement.nextSibling)
-                //     } else {
-                //       parent.appendChild(element)
-                //     }
-                //     window._lastElementInsertedByStyleLoader = element
-                //   },
-                // },
-              },
+              // {
+              // loader: 'style-loader',
+              // options: {
+              //   insert: function insertAtTop(element) {
+              //     var parent = document.querySelector('head')
+              //     var lastInsertedElement =
+              //       window._lastElementInsertedByStyleLoader
+              //     if (!lastInsertedElement) {
+              //       parent.insertBefore(element, parent.firstChild)
+              //     } else if (lastInsertedElement.nextSibling) {
+              //       parent.insertBefore(element, lastInsertedElement.nextSibling)
+              //     } else {
+              //       parent.appendChild(element)
+              //     }
+              //     window._lastElementInsertedByStyleLoader = element
+              //   },
+              // },
+              // },
+              devMode ? 'style-loader' : CssExtractPlugin.loader, //代替了style-loader
               {
                 loader: 'css-loader',
                 // options: {
@@ -72,7 +74,8 @@ module.exports = {
             test: /\.scss$/,
             use: [
               // 'vue-style-loader',  //vue-style-loader和style-loader二选一就可以
-              'style-loader',
+              // 'style-loader',
+              devMode ? 'style-loader' : CssExtractPlugin.loader, //代替了style-loader
               'css-loader',
               {
                 loader: 'sass-loader',
@@ -102,7 +105,7 @@ module.exports = {
               },
             ],
             exclude: /node_modules/,
-            // 当exclude中有需要解析的使用这种
+            // 注意： 当exclude中有需要解析的使用这种
             // exclude: {
             //   and: [/node_modules/], // Exclude libraries in node_modules ...
             //   not: [
@@ -155,7 +158,8 @@ module.exports = {
         // include: /src/,
       },
     ],
-    noParse: /^(vue|vue-router|vuex|vuex-router-sync)$/,
+    noParse:
+      /^(vue|vue-router|vuex|vuex-router-sync|react|react-dom|react-router)$/,
   },
   plugins: [new webpack.DefinePlugin(env.stringified), new VueLoaderPlugin()],
   resolve: {

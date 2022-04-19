@@ -25,7 +25,7 @@ const dotenvFiles = [
   paths.dotenv,
 ].filter(Boolean)
 
-console.log('本地化部署====', NODE_ENV, APP_ENV, dotenvFiles)
+// console.log('读取配置文件====', NODE_ENV, APP_ENV, dotenvFiles)
 
 dotenvFiles.forEach((dotenvFile) => {
   if (fs.existsSync(dotenvFile)) {

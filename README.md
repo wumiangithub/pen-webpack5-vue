@@ -21,8 +21,10 @@ npm start
 http://localhost:2022
 ```
 
-## 🖥 编写文档
+## 🖥 分析代码体积构成
 ```bash
+
+yarn analyzer
 
 ```
 

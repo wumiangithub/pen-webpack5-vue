@@ -10,6 +10,7 @@ const { appIndexJs, appHtml } = require('./paths')
 const devConfig = {
   target: 'web',
   mode: 'development',
+  cache: true,
   devServer: {
     open: true, //直接在浏览器打开
     // host: '0.0.0.0',
@@ -61,6 +62,11 @@ const devConfig = {
       inject: true,
     }),
   ],
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
 }
 
 const webpackConfig = merge(baseConfig, devConfig)
