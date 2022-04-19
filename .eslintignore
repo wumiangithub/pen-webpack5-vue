@@ -1,0 +1,16 @@
+*.d.ts
+dist
+dll
+docs
+esm
+lib
+node_modules
+.idea
+.docz
+docz-dist
+.vscode
+webpack.config.js
+webpack.dll.js
+webpack.pro.js
+gulpfile.js
+postcss.config.js

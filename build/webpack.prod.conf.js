@@ -23,8 +23,11 @@ const prodConfig = {
       },
       // chunksSortMode: 'auto',
     }),
-    APP_ANALYZER && new BundleAnalyzerPlugin(),
   ],
+}
+
+if (APP_ANALYZER) {
+	prodConfig.plugins.push(new BundleAnalyzerPlugin());
 }
 
 const webpackConfig = merge(baseConfig, prodConfig)

@@ -1,4 +1,4 @@
-const webpack = require('webpack');
+const webpack = require('webpack')
 const { VueLoaderPlugin } = require('vue-loader')
 const { appIndexJs, appBuild, appSrc, appPenLib } = require('./paths')
 const { getClientEnvironment } = require('./env')
@@ -8,9 +8,10 @@ module.exports = {
     app: appIndexJs,
   },
   output: {
-    path: appBuild,
+    path: appBuild, //dist目录
     filename: `static/js/[name].[hash:8].bundle.js`,
     chunkFilename: `static/js/[name].[hash:8].chunk.js`,
+    // clean: true, // 打包前清空输出目录，相当于clean-webpack-plugin插件的作用,webpack5新增
     // assetModuleFilename: 'static/images/[hash][ext][query]',//图片文件等资源输出目录
 
     // filename: staticFolderName + `/js/[name].[chunkhash:8].bundle.js`,
@@ -34,6 +35,7 @@ module.exports = {
           {
             test: /\.css$/,
             use: [
+              // 'vue-style-loader', //vue-style-loader和style-loader二选一就可以
               {
                 loader: 'style-loader',
                 // options: {
@@ -69,6 +71,7 @@ module.exports = {
           {
             test: /\.scss$/,
             use: [
+              // 'vue-style-loader',  //vue-style-loader和style-loader二选一就可以
               'style-loader',
               'css-loader',
               {
