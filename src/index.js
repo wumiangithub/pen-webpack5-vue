@@ -4,4 +4,5 @@ import router from './router'
 
 const app = createApp(App)
 app.use(router).mount('#app')
-console.log('444')
+console.log(process.env)
+console.log(process.env.NODE_ENV)

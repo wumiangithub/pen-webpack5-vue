@@ -1,7 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { merge } = require('webpack-merge')
 const { appHtml } = require('./paths')
-
+const BundleAnalyzerPlugin =
+  require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const APP_ANALYZER = process.env.APP_ANALYZER
 const baseConfig = require('./webpack.base.conf.js')
 
 const prodConfig = {
@@ -21,6 +23,7 @@ const prodConfig = {
       },
       // chunksSortMode: 'auto',
     }),
+    APP_ANALYZER && new BundleAnalyzerPlugin(),
   ],
 }
 

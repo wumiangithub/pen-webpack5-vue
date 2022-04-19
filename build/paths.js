@@ -29,6 +29,7 @@ const resolveModule = (resolveFn, filePath) => {
 }
 
 const pathUrl = {
+  dotenv: resolveApp('.env'),
   appIndexJs: resolveModule(resolveApp, 'src/index'),
   appHtml: resolveApp('public/index.html'),
   appBuild: resolveApp('dist'),

@@ -7,8 +7,8 @@ const { merge } = require('webpack-merge')
 const baseConfig = require('./webpack.base.conf.js')
 const { createNotifierCallback } = require('./utils')
 const { appIndexJs, appHtml } = require('./paths')
-
 const devConfig = {
+  target: 'web',
   mode: 'development',
   devServer: {
     open: true, //直接在浏览器打开

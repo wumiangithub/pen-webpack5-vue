@@ -1,7 +1,9 @@
+const webpack = require('webpack');
 const { VueLoaderPlugin } = require('vue-loader')
 const { appIndexJs, appBuild, appSrc, appPenLib } = require('./paths')
+const { getClientEnvironment } = require('./env')
+const env = getClientEnvironment()
 module.exports = {
-  target: 'web',
   entry: {
     app: appIndexJs,
   },
@@ -86,6 +88,28 @@ module.exports = {
             ],
             exclude: /node_modules/,
           },
+          {
+            test: /\.(js|ts)x?$/,
+            use: [
+              {
+                loader: 'babel-loader',
+                options: {
+                  cacheDirectory: true,
+                },
+              },
+            ],
+            exclude: /node_modules/,
+            // 当exclude中有需要解析的使用这种
+            // exclude: {
+            //   and: [/node_modules/], // Exclude libraries in node_modules ...
+            //   not: [
+            //     /unfetch/,
+            //     /d3-array|d3-scale/,
+            //     /@hapi[\\/]joi-date/,
+            //   ],
+            // },
+            // include: /src/,
+          },
         ],
         exclude: /node_modules/,
       },
@@ -114,10 +138,23 @@ module.exports = {
           filename: 'static/images/[hash][ext][query]', //导出路径
         },
       },
+      {
+        test: /\.(js|ts)x?$/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true,
+            },
+          },
+        ],
+        exclude: /node_modules/,
+        // include: /src/,
+      },
     ],
     noParse: /^(vue|vue-router|vuex|vuex-router-sync)$/,
   },
-  plugins: [new VueLoaderPlugin()],
+  plugins: [new webpack.DefinePlugin(env.stringified), new VueLoaderPlugin()],
   resolve: {
     //解析   可以是第三方包或者公众资源
     extensions: [
