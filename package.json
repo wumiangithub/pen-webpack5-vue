@@ -15,13 +15,14 @@
 		"build": "cross-env NODE_ENV=production APP_ENV=prod webpack --progress --config build/webpack.prod.conf.js",
 		"build2": "webpack build --config build/build.js",
 		"build1": "node build/build.js",
-		"pretty": "pretty-quick",
+		"pretty": "pretty-quick --staged",
+		"lint-staged": "lint-staged",
 		"prepare": "husky install",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "pretty-quick --staged && npm run eslint"
+			"pre-commit": "npm run pretty && npm run eslint"
 		}
 	},
 	"lint-staged": {
