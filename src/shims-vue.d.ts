@@ -7,4 +7,5 @@ declare module '*.vue' {
 
 interface Window {
 	Sortable: object;
+	process: object;
 }
