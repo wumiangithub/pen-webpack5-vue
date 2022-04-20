@@ -9,6 +9,7 @@ node_modules
 .docz
 docz-dist
 .vscode
+build
 webpack.config.js
 webpack.dll.js
 webpack.pro.js

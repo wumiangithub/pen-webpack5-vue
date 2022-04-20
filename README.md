@@ -31,4 +31,8 @@ yarn analyzer
 ## 🔨 Usage
 ```bash
 
+yarn prettier   格式化你的代码
+
+yarn build  构建你的生产代码
+
 ```

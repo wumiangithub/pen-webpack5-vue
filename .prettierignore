@@ -1,0 +1,14 @@
+**/*.md
+**/*.svg
+**/*.ejs
+**/*.html
+build/*.js
+node_modules
+dist
+dll
+esm
+lib
+.vscode
+.idea
+.docz
+docz-dist
