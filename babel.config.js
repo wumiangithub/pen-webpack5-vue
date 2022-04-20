@@ -28,6 +28,7 @@ module.exports = {
 				allExtensions: true, // ?支持所有文件扩展名
 			},
 		],
+		// '@vue/cli-plugin-babel/preset', //@vue/cli中有看到在使用，目前没用也没出问题
 	], //一定要配置target可以加快速度,减小体积
 	plugins: [
 		'@babel/plugin-proposal-class-properties',
