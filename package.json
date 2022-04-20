@@ -9,13 +9,13 @@
 		"start": "npm run dev",
 		"serve": "npm run dev",
 		"analyzer": "cross-env APP_ANALYZER=true npm run build",
-		"eslint": "eslint '**/*.{js,jsx,tsx,ts}' --no-error-on-unmatched-pattern --quiet",
-		"pretty": "pretty-quick",
+		"eslint": "eslint '**/*.{js,jsx,tsx,ts,vue}' --no-error-on-unmatched-pattern --quiet",
 		"format": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
 		"format:ts": "prettier --parser=typescript --write '**/*.{tsx,ts}'",
 		"build": "cross-env NODE_ENV=production APP_ENV=prod webpack --progress --config build/webpack.prod.conf.js",
 		"build2": "webpack build --config build/build.js",
 		"build1": "node build/build.js",
+		"pretty": "pretty-quick",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"husky": {
