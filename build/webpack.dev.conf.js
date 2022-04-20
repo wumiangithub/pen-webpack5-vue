@@ -22,7 +22,7 @@ const devConfig = {
 			//   secure: false, //将不接受在 HTTPS 上运行且证书无效的后端服务器。 如果需要
 			// },
 		},
-		port: process.env.PORT || 2022,
+		port: process.env.PORT || 2023,
 		headers: {
 			'Access-Control-Allow-Origin': '*',
 			// 'X-Custom-Foo': 'bar',

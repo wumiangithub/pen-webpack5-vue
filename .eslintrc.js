@@ -5,8 +5,10 @@ module.exports = {
 		es2021: true,
 	},
 	extends: [
+		// 'plugin:vue/essential',  //vue2
+		'plugin:vue/vue3-essential',
 		'eslint:recommended',
-		'plugin:vue/essential',
+		'@vue/typescript/recommended',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:prettier/recommended',
 		// 'prettier/@typescript-eslint', //被废弃了，整合到prettier中了// Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier

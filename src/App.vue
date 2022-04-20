@@ -30,6 +30,7 @@ export default {
 // @use "./style/test.scss"; //@use在这里又不生效，只能使用@import
 // @import "./style/test.scss";
 #app {
+	// background-color: red;
 	background-color: $primaryColor;
 }
 </style>

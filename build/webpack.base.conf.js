@@ -94,6 +94,31 @@ module.exports = {
 						],
 						exclude: /node_modules/,
 					},
+					/*
+      asset/inline会将文件作为 data URI 内联到 bundle 中
+      asset/resource  生成一个文件链接
+      asset根据文件大小自动转为asset/inline和asset/resource 默认8kb
+      asset/source 导出资源的源代码。之前通过使用 raw-loader 实现  没用过
+      */
+					{
+						test: /\.(woff|woff2|eot|ttf|otf)$/,
+						type: 'asset/resource', //代替file-loader
+						generator: {
+							filename: 'static/fonts/[hash][ext][query]', //导出路径
+						},
+					},
+					{
+						test: /\.(png|gif|bmp|svg|jpe?g)$/i,
+						type: 'asset', //代替url-loader
+						parser: {
+							dataUrlCondition: {
+								maxSize: 3 * 1024,
+							},
+						},
+						generator: {
+							filename: 'static/images/[hash][ext][query]', //导出路径
+						},
+					},
 					{
 						test: /\.(js|ts)x?$/,
 						use: [
@@ -104,6 +129,7 @@ module.exports = {
 								},
 							},
 						],
+						include: /src/,
 						exclude: /node_modules/,
 						// 注意： 当exclude中有需要解析的使用这种
 						// exclude: {
@@ -114,48 +140,9 @@ module.exports = {
 						//     /@hapi[\\/]joi-date/,
 						//   ],
 						// },
-						// include: /src/,
 					},
 				],
 				exclude: /node_modules/,
-			},
-			/*
-      asset/inline会将文件作为 data URI 内联到 bundle 中
-      asset/resource  生成一个文件链接
-      asset根据文件大小自动转为asset/inline和asset/resource 默认8kb
-      asset/source 导出资源的源代码。之前通过使用 raw-loader 实现  没用过
-      */
-			{
-				test: /\.(woff|woff2|eot|ttf|otf)$/,
-				type: 'asset/resource', //代替file-loader
-				generator: {
-					filename: 'static/fonts/[hash][ext][query]', //导出路径
-				},
-			},
-			{
-				test: /\.(png|gif|bmp|svg|jpe?g)$/i,
-				type: 'asset', //代替url-loader
-				parser: {
-					dataUrlCondition: {
-						maxSize: 3 * 1024,
-					},
-				},
-				generator: {
-					filename: 'static/images/[hash][ext][query]', //导出路径
-				},
-			},
-			{
-				test: /\.(js|ts)x?$/,
-				use: [
-					{
-						loader: 'babel-loader',
-						options: {
-							cacheDirectory: true,
-						},
-					},
-				],
-				exclude: /node_modules/,
-				// include: /src/,
 			},
 		],
 		noParse: /^(vue|vue-router|vuex|vuex-router-sync|react|react-dom|react-router)$/,
@@ -173,8 +160,8 @@ module.exports = {
 	optimization: {
 		/* 
     默认为true。开启之后，有利于Tree-shaking剔除没有引入的代码 false的话是说，全部代码都没有副作用。
-    要指定具体没有副作用的文件，可以去package.json中配置
+    要指定具体没有副作用的文件，可以去package.json中配置  适合组件库使用
      */
-		sideEffects: true,
+		// sideEffects: true,
 	},
 };

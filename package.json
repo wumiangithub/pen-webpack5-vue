@@ -33,14 +33,6 @@
 			"prettier --parser=typescript --write"
 		]
 	},
-	"sideEffects": [
-		"dist/*",
-		"esm/**/style/*",
-		"lib/**/style/*",
-		"*.less",
-		"*.css",
-		"*.scss"
-	],
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
@@ -54,6 +46,7 @@
 		"@babel/runtime": "^7.17.9",
 		"@typescript-eslint/eslint-plugin": "^5.20.0",
 		"@typescript-eslint/parser": "^5.20.0",
+		"@vue/eslint-config-typescript": "^10.0.0",
 		"address": "^1.1.2",
 		"babel-loader": "^8.2.4",
 		"chalk": "^5.0.1",
