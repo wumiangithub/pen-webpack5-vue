@@ -31,6 +31,28 @@ module.exports = {
 				exclude: /node_modules/,
 			},
 			{
+				test: /\.(js|ts)x?$/,
+				use: [
+					{
+						loader: 'babel-loader',
+						options: {
+							cacheDirectory: true,
+						},
+					},
+				],
+				include: /src/,
+				exclude: /node_modules/,
+				// 注意： 当exclude中有需要解析的使用这种
+				// exclude: {
+				//   and: [/node_modules/], // Exclude libraries in node_modules ...
+				//   not: [
+				//     /unfetch/,
+				//     /d3-array|d3-scale/,
+				//     /@hapi[\\/]joi-date/,
+				//   ],
+				// },
+			},
+			{
 				//oneOf  只匹配一个loader
 				oneOf: [
 					{
@@ -118,28 +140,6 @@ module.exports = {
 						generator: {
 							filename: 'static/images/[hash][ext][query]', //导出路径
 						},
-					},
-					{
-						test: /\.(js|ts)x?$/,
-						use: [
-							{
-								loader: 'babel-loader',
-								options: {
-									cacheDirectory: true,
-								},
-							},
-						],
-						include: /src/,
-						exclude: /node_modules/,
-						// 注意： 当exclude中有需要解析的使用这种
-						// exclude: {
-						//   and: [/node_modules/], // Exclude libraries in node_modules ...
-						//   not: [
-						//     /unfetch/,
-						//     /d3-array|d3-scale/,
-						//     /@hapi[\\/]joi-date/,
-						//   ],
-						// },
 					},
 				],
 				exclude: /node_modules/,

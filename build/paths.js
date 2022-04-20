@@ -28,10 +28,10 @@ const resolveModule = (resolveFn, filePath) => {
 
 const pathUrl = {
 	dotenv: resolveApp('.env'),
-	appIndexJs: resolveModule(resolveApp, 'src/index'),
+	appIndexJs: resolveModule(resolveApp, 'src/main'),
 	appHtml: resolveApp('public/index.html'),
 	appBuild: resolveApp('dist'),
 	appSrc: resolveApp('src'),
-	appPenLib: resolveApp('components'),
+	appPenLib: resolveApp('src/pen-lib'),
 };
 module.exports = pathUrl;
