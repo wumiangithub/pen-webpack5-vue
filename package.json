@@ -10,12 +10,18 @@
 		"serve": "npm run dev",
 		"analyzer": "cross-env APP_ANALYZER=true npm run build",
 		"eslint": "eslint '**/*.{js,jsx,tsx,ts}' --no-error-on-unmatched-pattern --quiet",
+		"pretty": "pretty-quick",
 		"prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
 		"prettier:ts": "prettier --parser=typescript --write '**/*.{tsx,ts}'",
 		"build": "cross-env NODE_ENV=production APP_ENV=prod webpack --progress --config build/webpack.prod.conf.js",
 		"build2": "webpack build --config build/build.js",
 		"build1": "node build/build.js",
 		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "pretty-quick --staged && npm run eslint"
+		}
 	},
 	"keywords": [],
 	"author": "",
@@ -45,11 +51,13 @@
 		"eslint-plugin-vue": "^8.6.0",
 		"friendly-errors-webpack-plugin": "^1.7.0",
 		"html-webpack-plugin": "^5.5.0",
+		"husky": "^7.0.4",
 		"mini-css-extract-plugin": "^2.6.0",
 		"node-sass": "^7.0.1",
 		"ora": "^6.1.0",
 		"portfinder": "^1.0.28",
 		"prettier": "^2.6.2",
+		"pretty-quick": "^3.1.3",
 		"sass-loader": "^12.6.0",
 		"style-loader": "^3.3.1",
 		"terser-webpack-plugin": "^5.3.1",
