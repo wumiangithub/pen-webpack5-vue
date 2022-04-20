@@ -12,3 +12,4 @@ lib
 .idea/
 .docz/
 docz-dist
+.husky/

@@ -16,12 +16,21 @@
 		"build2": "webpack build --config build/build.js",
 		"build1": "node build/build.js",
 		"pretty": "pretty-quick",
+		"prepare": "husky install",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"husky": {
 		"hooks": {
 			"pre-commit": "npm run format && npm run eslint"
 		}
+	},
+	"lint-staged": {
+		"*.{js,jsx,less,md,json,vue}": [
+			"prettier --write"
+		],
+		"*.ts?(x)": [
+			"prettier --parser=typescript --write"
+		]
 	},
 	"keywords": [],
 	"author": "",
@@ -52,6 +61,7 @@
 		"friendly-errors-webpack-plugin": "^1.7.0",
 		"html-webpack-plugin": "^5.5.0",
 		"husky": "^7.0.4",
+		"lint-staged": "^12.3.8",
 		"mini-css-extract-plugin": "^2.6.0",
 		"node-sass": "^7.0.1",
 		"ora": "^6.1.0",
