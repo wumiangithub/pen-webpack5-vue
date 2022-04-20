@@ -31,8 +31,10 @@ yarn analyzer
 ## 🔨 Usage
 ```bash
 
-yarn format   格式化你的代码
+yarn format   格式化你的所有代码
 
-yarn build  构建你的生产代码
+yarn pretty   格式化git修改的文件
+
+yarn build    构建你的生产代码
 
 ```

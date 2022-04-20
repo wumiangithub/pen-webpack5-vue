@@ -10,7 +10,7 @@
 		"serve": "npm run dev",
 		"analyzer": "cross-env APP_ANALYZER=true npm run build",
 		"eslint": "eslint '**/*.{js,jsx,tsx,ts,vue}' --no-error-on-unmatched-pattern --quiet",
-		"format": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
+		"format": "prettier --write '**/*.{js,jsx,tsx,ts,less,scss,css,md,json,vue}'",
 		"format:ts": "prettier --parser=typescript --write '**/*.{tsx,ts}'",
 		"build": "cross-env NODE_ENV=production APP_ENV=prod webpack --progress --config build/webpack.prod.conf.js",
 		"build2": "webpack build --config build/build.js",
@@ -21,11 +21,11 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "npm run format && npm run eslint"
+			"pre-commit": "pretty-quick --staged && npm run eslint"
 		}
 	},
 	"lint-staged": {
-		"*.{js,jsx,less,md,json,vue}": [
+		"*.{js,jsx,less,scss,css,md,json,vue}": [
 			"prettier --write"
 		],
 		"*.ts?(x)": [

@@ -1,2 +1,3 @@
-const a = 0
-const b = 0
+const a = 0;
+const b = 0;
+const c = 0;
