@@ -20,7 +20,7 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "pretty-quick --staged && npm run eslint"
+			"pre-commit": "npm run format && npm run eslint"
 		}
 	},
 	"keywords": [],

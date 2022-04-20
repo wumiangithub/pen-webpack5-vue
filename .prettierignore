@@ -8,7 +8,7 @@ dist
 dll
 esm
 lib
-.vscode
-.idea
-.docz
+.vscode/
+.idea/
+.docz/
 docz-dist
