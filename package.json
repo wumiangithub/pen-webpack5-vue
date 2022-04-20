@@ -33,6 +33,14 @@
 			"prettier --parser=typescript --write"
 		]
 	},
+	"sideEffects": [
+		"dist/*",
+		"esm/**/style/*",
+		"lib/**/style/*",
+		"*.less",
+		"*.css",
+		"*.scss"
+	],
 	"keywords": [],
 	"author": "",
 	"license": "ISC",

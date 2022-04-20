@@ -2,7 +2,6 @@
 **/*.svg
 **/*.ejs
 **/*.html
-build/*.js
 node_modules
 dist
 dll
