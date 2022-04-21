@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const address = require('address')
-// const portfinder = require('portfinder')
+const portfinder = require('portfinder');
 // const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const { merge } = require('webpack-merge');
 const baseConfig = require('./webpack.base.conf.js');
@@ -23,7 +23,7 @@ const devConfig = {
 			//   secure: false, //将不接受在 HTTPS 上运行且证书无效的后端服务器。 如果需要
 			// },
 		},
-		port: process.env.PORT || 2023,
+		port: process.env.PORT || 2022,
 		headers: {
 			'Access-Control-Allow-Origin': '*',
 			// 'X-Custom-Foo': 'bar',
@@ -72,32 +72,32 @@ const devConfig = {
 
 const webpackConfig = merge(baseConfig, devConfig);
 
-module.exports = webpackConfig;
+// module.exports = webpackConfig;
 
-// module.exports = new Promise((resolve, reject) => {
-//   portfinder.basePort = webpackConfig.devServer.port
-//   portfinder.getPort((err, port) => {
-//     if (err) {
-//       reject(err)
-//     } else {
-//       // publish the new Port, necessary for e2e tests
-//       process.env.PORT = port
-//       // add port to devServer config
-//       webpackConfig.devServer.port = port
-//       // Add FriendlyErrorsPlugin
-//       webpackConfig.plugins.push(
-//         new FriendlyErrorsPlugin({
-//           compilationSuccessInfo: {
-//             messages: [
-//               `你的应用程序运行在: http://localhost:${
-//                 webpackConfig.devServer.port
-//               } or http://${address.ip()}:${webpackConfig.devServer.port}`,
-//             ],
-//           },
-//           // onErrors: createNotifierCallback(),
-//         })
-//       )
-//       resolve(webpackConfig)
-//     }
-//   })
-// })
+module.exports = new Promise((resolve, reject) => {
+	portfinder.basePort = webpackConfig.devServer.port;
+	portfinder.getPort((err, port) => {
+		if (err) {
+			reject(err);
+		} else {
+			// publish the new Port, necessary for e2e tests
+			process.env.PORT = port;
+			// add port to devServer config
+			webpackConfig.devServer.port = port;
+			// Add FriendlyErrorsPlugin
+			// webpackConfig.plugins.push(
+			// 	new FriendlyErrorsPlugin({
+			// 		compilationSuccessInfo: {
+			// 			messages: [
+			// 				`你的应用程序运行在: http://localhost:${
+			// 					webpackConfig.devServer.port
+			// 				} or http://${address.ip()}:${webpackConfig.devServer.port}`,
+			// 			],
+			// 		},
+			// 		// onErrors: createNotifierCallback(),
+			// 	}),
+			// );
+			resolve(webpackConfig);
+		}
+	});
+});
