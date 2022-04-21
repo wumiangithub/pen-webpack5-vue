@@ -15,6 +15,7 @@ const devConfig = {
 	devServer: {
 		open: true, //直接在浏览器打开
 		// host: '0.0.0.0',
+		historyApiFallback: true, //必须开启，不然vue-router history无法使用
 		compress: false, //启用 gzip compression：
 		proxy: {
 			// '/api': {

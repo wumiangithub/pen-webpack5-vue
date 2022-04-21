@@ -13,6 +13,7 @@ module.exports = {
 		path: appBuild, //dist目录
 		filename: `static/js/[name].[hash:8].bundle.js`,
 		chunkFilename: `static/js/[name].[hash:8].chunk.js`,
+		publicPath: '/', //强调不能是./
 		// assetModuleFilename: 'static/images/[hash][ext][query]',//图片文件等资源输出目录
 
 		// filename: staticFolderName + `/js/[name].[chunkhash:8].bundle.js`,
