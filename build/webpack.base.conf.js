@@ -126,7 +126,7 @@ module.exports = {
 						test: /\.(woff|woff2|eot|ttf|otf)$/,
 						type: 'asset/resource', //代替file-loader
 						generator: {
-							filename: 'static/fonts/[hash][ext][query]', //导出路径
+							filename: 'static/fonts/[hash:8][ext][query]', //导出路径
 						},
 						exclude: /node_modules/,
 					},
@@ -139,7 +139,7 @@ module.exports = {
 							},
 						},
 						generator: {
-							filename: 'static/images/[hash][ext][query]', //导出路径
+							filename: 'static/images/[hash:8][ext][query]', //导出路径
 						},
 						exclude: /node_modules/,
 					},

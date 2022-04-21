@@ -49,6 +49,7 @@ exports.getClientEnvironment = publicUrl => {
 			{
 				// NODE_ENV: process.env.NODE_ENV || 'production',
 				// PUBLIC_URL: publicUrl,
+				BASE_URL: process.env.BASE_URL || '/',
 			},
 		);
 	const stringified = {

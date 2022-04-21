@@ -53,7 +53,11 @@ const prodConfig = {
 				parallel: true,
 				terserOptions: {
 					ecma: 6,
+					format: {
+						comments: false, //false删除注释，结合extractComments：false
+					},
 				},
+				extractComments: false, //true:保留注释，false删除注释      是否将注释单独剥离到一个文件中  有很多注释类型都是不识别的
 			}),
 			//压缩css
 			new CssMinimizerPlugin({
