@@ -90,7 +90,7 @@ module.exports = {
 							},
 							// 'postcss-loader',
 						],
-						exclude: /node_modules/,
+						// exclude: /node_modules/, //css不能排除node_modules，不然像element plus一些插件会报错
 					},
 					{
 						test: /\.scss$/,
@@ -128,6 +128,7 @@ module.exports = {
 						generator: {
 							filename: 'static/fonts/[hash][ext][query]', //导出路径
 						},
+						exclude: /node_modules/,
 					},
 					{
 						test: /\.(png|gif|bmp|svg|jpe?g)$/i,
@@ -140,14 +141,21 @@ module.exports = {
 						generator: {
 							filename: 'static/images/[hash][ext][query]', //导出路径
 						},
+						exclude: /node_modules/,
 					},
 				],
-				exclude: /node_modules/,
 			},
 		],
 		noParse: /^(vue|vue-router|vuex|vuex-router-sync|react|react-dom|react-router)$/,
 	},
-	plugins: [new webpack.DefinePlugin(env.stringified), new VueLoaderPlugin()],
+	plugins: [
+		new webpack.DefinePlugin({
+			...env.stringified,
+			__VUE_OPTIONS_API__: true,
+			__VUE_PROD_DEVTOOLS__: true,
+		}),
+		new VueLoaderPlugin(),
+	],
 	resolve: {
 		//解析   可以是第三方包或者公众资源
 		extensions: ['.ts', '.js', '.vue', '.css', '.scss', '.less', '.styl', '.tsx', '.jsx', '.json'], //引用资源的时候可以省略写后缀

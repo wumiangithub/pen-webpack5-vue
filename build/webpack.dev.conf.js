@@ -11,6 +11,7 @@ const devConfig = {
 	target: 'web',
 	mode: 'development',
 	cache: true,
+	devtool: 'inline-source-map', // 加上对应的配置  不然element plus控制台会有警告
 	devServer: {
 		open: true, //直接在浏览器打开
 		// host: '0.0.0.0',
