@@ -12,7 +12,7 @@ module.exports = {
 	output: {
 		path: appBuild, //dist目录
 		filename: `static/js/[name].[hash:8].bundle.js`,
-		chunkFilename: `static/js/[name].[hash:8].chunk.js`,
+		chunkFilename: `static/js/[name].[chunkhash:8].chunk.js`,
 		publicPath: '/', //强调不能是./
 		// assetModuleFilename: 'static/images/[hash][ext][query]',//图片文件等资源输出目录
 
@@ -127,7 +127,7 @@ module.exports = {
 						test: /\.(woff|woff2|eot|ttf|otf)$/,
 						type: 'asset/resource', //代替file-loader
 						generator: {
-							filename: 'static/fonts/[hash:8][ext][query]', //导出路径
+							filename: 'static/fonts/[contentHash:8][ext][query]', //导出路径
 						},
 						exclude: /node_modules/,
 					},
@@ -140,7 +140,7 @@ module.exports = {
 							},
 						},
 						generator: {
-							filename: 'static/images/[hash:8][ext][query]', //导出路径
+							filename: 'static/images/[contentHash:8][ext][query]', //导出路径
 						},
 						exclude: /node_modules/,
 					},

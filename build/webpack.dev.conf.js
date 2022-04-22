@@ -42,17 +42,17 @@ const devConfig = {
 			paths: ['src/**/*', 'public/**/*'],
 			options: {
 				ignored: /node_modules/,
-				usePolling: false,
+				usePolling: false, //是否采用轮询
 			},
 		},
 		// clientLogLevel: 'none', //warning   none  废弃了
 	},
 	// watch: true, //有watchOptions就不需要watch， 使用webpack-dev-serve默认也就是开启的
 	watchOptions: {
-		// ignored: /node_modules/,
-		ignored: ['/node_modules/'],
-		aggregateTimeout: 1000, //防止重复按键，1000毫米内算按键一次  注意：老的写法aggregeateTimeout单词和现在不一样
-		poll: 1000, //每秒检查一次变动
+		ignored: /node_modules/,
+		// ignored: ['/node_modules/'],
+		aggregateTimeout: 2000, //防止重复按键，2000毫米内算按键一次  注意：老的写法aggregeateTimeout单词和现在不一样
+		poll: 2000, //每2秒检查一次变动
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
