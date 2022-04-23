@@ -79,6 +79,7 @@ module.exports = {
 							// },
 							// },
 							devMode ? 'style-loader' : CssExtractPlugin.loader, //代替了style-loader
+							// 'style-loader',
 							{
 								loader: 'css-loader',
 								// options: {
@@ -127,7 +128,7 @@ module.exports = {
 						test: /\.(woff|woff2|eot|ttf|otf)$/,
 						type: 'asset/resource', //代替file-loader
 						generator: {
-							filename: 'static/fonts/[contentHash:8][ext][query]', //导出路径
+							filename: 'static/fonts/[name].[hash:3][ext][query]', //导出路径
 						},
 						exclude: /node_modules/,
 					},
@@ -139,8 +140,11 @@ module.exports = {
 								maxSize: 3 * 1024,
 							},
 						},
+						/* 
+						ext 应该是.png  这样的后缀
+						*/
 						generator: {
-							filename: 'static/images/[contentHash:8][ext][query]', //导出路径
+							filename: 'static/images/[name].[hash:3][ext][query]', //导出路径
 						},
 						exclude: /node_modules/,
 					},

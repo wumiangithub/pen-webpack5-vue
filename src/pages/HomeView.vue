@@ -1,10 +1,13 @@
 <template>
-	<div class="">{{ msg }}</div>
+	<div class="test">{{ msg }}1</div>
+	<div class="test1">{{ msg }}22ssd</div>
+	<!-- <div class="test2">{{ msg }}3333</div> -->
 	<!-- <img src="../imgs/logo.png" alt=""/> -->
 	<img src="@/imgs/logo.png" alt="" />
 </template>
 
 <script>
+// import '../style/test.scss';
 export default {
 	components: {},
 	data() {
@@ -19,4 +22,7 @@ export default {
 	mounted() {},
 };
 </script>
-<style lang="scss" scoped></style>
+
+<style lang="scss" scoped>
+@import '../style/test.scss';
+</style>

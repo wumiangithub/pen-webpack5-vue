@@ -12,6 +12,7 @@
 </template>
 
 <script>
+// import './style/test.scss';
 export default {
 	components: {},
 	data() {
@@ -28,7 +29,7 @@ export default {
 <style lang="scss">
 // @import './style/config.scss'; //已经替换为全局导入了，所以不在需要单独导入
 // @use "./style/test.scss"; //@use在这里又不生效，只能使用@import
-// @import "./style/test.scss";
+// @import './style/test.scss';
 #app {
 	// background-color: red;
 	background-color: $primaryColor;

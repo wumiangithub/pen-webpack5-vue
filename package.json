@@ -33,7 +33,13 @@
 			"prettier --parser=typescript --write"
 		]
 	},
-	"keywords": [],
+	"keywords": [
+		"vue",
+		"webpack",
+		"webpack5",
+		"@vue/cli",
+		"pen-webpack5-vue"
+	],
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {

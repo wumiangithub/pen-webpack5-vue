@@ -7,7 +7,9 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin'); //压缩css
 */
 const CssExtractPlugin = require('mini-css-extract-plugin'); //分割css 而且production环境替代style-loader
 const { merge } = require('webpack-merge');
-const { appHtml } = require('./paths');
+// const glob = require('glob');
+// const PurgeCSSPlugin = require('purgecss-webpack-plugin'); //让css也开启tree-shaking
+const { appHtml, appSrc } = require('./paths');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const APP_ANALYZER = process.env.APP_ANALYZER;
 const baseConfig = require('./webpack.base.conf.js');
@@ -36,6 +38,10 @@ const prodConfig = {
 			//分隔css
 			filename: 'static/css/[name].[hash:8].css',
 		}),
+		// new PurgeCSSPlugin({
+		// 	// 让css也开启tree-shaking  ，很遗憾虽然可以tree-shaking但是scoped下样式不会打包
+		// 	paths: glob.sync(`${appSrc}/**/*`, { nodir: true }),
+		// }),
 		new CompressionPlugin({
 			//压缩gzip
 			algorithm: 'gzip',
