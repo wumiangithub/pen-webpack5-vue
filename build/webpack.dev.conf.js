@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const address = require('address')
 const portfinder = require('portfinder');
@@ -63,6 +64,7 @@ const devConfig = {
 			template: appHtml,
 			inject: true,
 		}),
+		new webpack.HotModuleReplacementPlugin(), //绝对不能用在生产环境
 	],
 	optimization: {
 		splitChunks: {
