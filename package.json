@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "cross-env NODE_ENV=development APP_ENV=dev webpack-dev-server  --config build/webpack.dev.conf.js",
+		"dev": "cross-env NODE_ENV=development APP_ENV=dev webpack-dev-server --progress  --config build/webpack.dev.conf.js",
 		"dev1": "cross-env NODE_ENV=development APP_ENV=dev webpack serve  --config build/webpack.dev.conf.js",
 		"start": "npm run dev",
 		"serve": "npm run dev",

@@ -16,7 +16,10 @@ const devConfig = {
 	devServer: {
 		open: true, //直接在浏览器打开
 		// host: '0.0.0.0',
+		// progress: true, //废弃
+		hot: true,
 		historyApiFallback: true, //必须开启，不然vue-router history无法使用
+		liveReload: false, //文件变化的时候，刷不刷页面
 		compress: false, //启用 gzip compression：
 		proxy: {
 			// '/api': {
@@ -38,7 +41,6 @@ const devConfig = {
 				warnings: false,
 			}, //当出现编译错误或警告时，在浏览器中显示全屏覆盖。
 		},
-		hot: true,
 		watchFiles: {
 			paths: ['src/**/*', 'public/**/*'],
 			options: {
