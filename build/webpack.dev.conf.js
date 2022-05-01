@@ -20,7 +20,7 @@ const devConfig = {
 		hot: true,
 		historyApiFallback: true, //必须开启，不然vue-router history无法使用
 		liveReload: false, //文件变化的时候，刷不刷页面
-		compress: false, //启用 gzip compression：
+		compress: true, //启用 gzip compression： 开启后有利于页面性能
 		proxy: {
 			// '/api': {
 			//   target: 'http://localhost:3000',
@@ -69,9 +69,11 @@ const devConfig = {
 		new webpack.HotModuleReplacementPlugin(), //绝对不能用在生产环境
 	],
 	optimization: {
+		// minimize: true, //devServer开启压缩，这里不要开
 		splitChunks: {
 			chunks: 'all',
 		},
+		runtimeChunk: true,
 	},
 };
 
