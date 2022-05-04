@@ -66,7 +66,7 @@ const devConfig = {
 			template: appHtml,
 			inject: true,
 		}),
-		new webpack.HotModuleReplacementPlugin(), //绝对不能用在生产环境
+		// new webpack.HotModuleReplacementPlugin(), //绝对不能用在生产环境  有hot就不需要了
 	],
 	optimization: {
 		// minimize: true, //devServer开启压缩，这里不要开
