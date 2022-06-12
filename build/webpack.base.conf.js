@@ -29,6 +29,7 @@ module.exports = {
 				test: /\.vue$/,
 				loader: 'vue-loader',
 				// options: vueLoaderConfig,
+				include: /src/,
 				exclude: /node_modules/,
 			},
 			{
@@ -93,6 +94,18 @@ module.exports = {
 							// 'postcss-loader',
 						],
 						// exclude: /node_modules/, //css不能排除node_modules，不然像element plus一些插件会报错
+						// 第三方库的css也需要解析，不能排除
+						// include: [/src/, /\/node_module\/^element-plus.*/],
+						// include: [/src/, path.resolve(__dirname, './node_modules/element-plus')],
+						// include: /\/node_module\/^element-plus.*/
+						// include: /src/,
+						// exclude: /node_modules/,
+						// exclude: /node_modules\/[^element-plus]/,
+						// exclude: {
+						// 	not: [/node_modules/], // Exclude libraries in node_modules ...
+						// 	and: [/@element-plus/],
+						// },
+						include: [/src/, /node_module/],
 					},
 					{
 						test: /\.scss$/,
@@ -116,6 +129,7 @@ module.exports = {
 							//   },
 							// },
 						],
+						include: /src/,
 						exclude: /node_modules/,
 					},
 					/*
@@ -130,6 +144,7 @@ module.exports = {
 						generator: {
 							filename: 'static/fonts/[name].[hash:3][ext][query]', //导出路径
 						},
+						include: /src/,
 						exclude: /node_modules/,
 					},
 					{
@@ -146,6 +161,7 @@ module.exports = {
 						generator: {
 							filename: 'static/images/[name].[hash:3][ext][query]', //导出路径
 						},
+						include: /src/,
 						exclude: /node_modules/,
 					},
 				],
