@@ -47,7 +47,7 @@ exports.getClientEnvironment = publicUrl => {
 				return env;
 			},
 			{
-				// NODE_ENV: process.env.NODE_ENV || 'production',
+				NODE_ENV: process.env.NODE_ENV || 'production',
 				// PUBLIC_URL: publicUrl,
 				BASE_URL: process.env.BASE_URL || '/',
 			},
